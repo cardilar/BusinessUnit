@@ -14,8 +14,8 @@ public class BusinessUnitStep {
 		businessUnitPageObject.pestanaBusinessUnit();
 	}
 
-	public void CrearUnidadNegocio(String nombre, String parentezco) {
-		businessUnitPageObject.creaBusinessUnit(nombre, parentezco);
+	public void CrearUnidadNegocio(String nombre) {
+		businessUnitPageObject.creaBusinessUnit(nombre);
 		
 	}
 	

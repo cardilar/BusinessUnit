@@ -14,8 +14,16 @@ public class MeetingsStep {
 		
 	}
 	
-	public void diligenciarFormulario() {
-		crearReunion.CrearNuevaReunion();
+	public void diligenciarFormulario(String nombreReunion, String telefono, String tipoReunion) {
+		crearReunion.CrearNuevaReunion(nombreReunion, telefono, tipoReunion);
+	}
+
+	public void DiligenciarLocalizacion(String nombre, String direccion) {
+		crearReunion.Localizacion(nombre, direccion);
+	}
+
+	public void diligenciarOgranizacion(String titulo, String nombre, String apellido, String correo, String dominio) {
+		crearReunion.Organizada(titulo, nombre, apellido, correo, dominio);
 	}
 
 }

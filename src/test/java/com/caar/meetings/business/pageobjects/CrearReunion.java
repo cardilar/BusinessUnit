@@ -15,8 +15,8 @@ public class CrearReunion extends PageObject{
 	
 	String nameMeeting= "//input[contains(@name,'MeetingName')]";
 	String number= "//input[contains(@name,'MeetingNumber')]";
-	String unit= "//span[contains(@id,'select2-chosen-8')]";
-	String unitLast = "//input[contains(@class,'select2-input') and contains(@id,'s2id_autogen8_search')]";
+	String unit= "//div[contains(@id,'_MeetingDialog14_UnitId')]//child::a";
+	String unitLast = "//input[@class='select2-input' and @id='s2id_autogen8_search']";
 	
 	String meetingType = "(//a[contains(@class,'inplace-button inplace-create')])[1]";
 	String nameTypeLocation="(//label//following-sibling::input[contains(@name,'Name')])[2]";
@@ -34,68 +34,68 @@ public class CrearReunion extends PageObject{
 	String organizedMail = "//input[contains(@name,'Email')]";
 	String organizedMailDomain = "//input[contains(@class,'emaildomain')]";
 	
-	String reporter = "(//span[contains(text(),'--select--')])[2]";
-	String attendeeList = "//div[contains(@id,'s2id_autogen11')]";
-	String opcion1= "(//li[@class='select2-results-dept-0 select2-result select2-result-selectable'])[1]";
+	String reporter = "//div[contains(@id,'MeetingDialog14_ReporterContactId')]//child::a";
+	String attendeeList = "//div[contains(@id,'s2id_autogen11')]//child::a";
+	String opcion1= "//li[@class='select2-results-dept-0 select2-result select2-result-selectable']//div[contains(text(),'%s')]";
+	
+	String guardar="//span[contains(text(),' Save')]";
 	
 	public void IngresarAReuniones() {
 		aplicativo.clickConJS(pestanaReunion);
 		aplicativo.clickConJS(opcionReuniones);	
 	}
 	
-	public void CrearNuevaReunion() {
+	public void CrearNuevaReunion(String nombreReunio, String telefono, String tipoReuniones) {
 		aplicativo.clickConJS(btnNuevaReunion);
 		WebElement nombreReunion = getDriver().findElement(By.xpath(nameMeeting));
-		nombreReunion.sendKeys("Laboral");
+		nombreReunion.sendKeys(nombreReunio);
 		WebElement numeroReunion = getDriver().findElement(By.xpath(number));
-		numeroReunion.sendKeys("31233987");
-		TipoReunion();
-		Localizacion();
-		Organizada();
-		aplicativo.clickConJS(reporter);
-		aplicativo.clickConJS(opcion1);
-		aplicativo.clickConJS(attendeeList);
-		
+		numeroReunion.sendKeys(telefono);
+		TipoReunion(tipoReuniones);		
 	}
 
-	private void TipoReunion() {
+	private void TipoReunion(String tipoReuniones) {
 		aplicativo.clickConJS(meetingType);
 		WebElement nombreTipoReunion = getDriver().findElement(By.xpath(nameTypeLocation));
 		nombreTipoReunion.clear();
-		nombreTipoReunion.sendKeys("Ordinaria");
+		nombreTipoReunion.sendKeys(tipoReuniones);
 		aplicativo.clickConJS(updateTypeMeeting);
 	}
 	
-	private void Localizacion() {
+	public void Localizacion(String nombre, String direccion) {
 		aplicativo.clickConJS(location);
-		WebElement nombreLocacion = getDriver().findElement(By.xpath(nameTypeLocation));
-		//aplicativo.esperarElementoVisible(nameTypeLocation);
-		//nombreLocacion.isDisplayed();
-		nombreLocacion.sendKeys("Carlos");
-		if(nameTypeLocation.equalsIgnoreCase(null))
-			nombreLocacion.sendKeys("Carlos");
 		WebElement direccionLocacion = getDriver().findElement(By.xpath(locationAddress));
 		direccionLocacion.isDisplayed();
-		direccionLocacion.sendKeys("Calle 1 Carrera 1");
+		direccionLocacion.sendKeys(direccion);
+		WebElement nombreLocacion = getDriver().findElement(By.xpath(nameTypeLocation));
+		nombreLocacion.sendKeys(nombre);
 		aplicativo.clickConJS(locationOrganizedBtnSave);
 	}
 	
-	private void Organizada() {
+	public void Organizada(String titulo, String nombre, String apellido, String correo, String dominio) {
 		aplicativo.clickConJS(organized);
 		aplicativo.esperarElementoVisible(organizedTitle);
 		WebElement tituloOrganizada = getDriver().findElement(By.xpath(organizedTitle));
 		tituloOrganizada.isDisplayed();
-		tituloOrganizada.sendKeys("Hakuna Matata");
+		tituloOrganizada.sendKeys(titulo);
 		WebElement nombreOrganizador = getDriver().findElement(By.xpath(organizedFirstName));
 		nombreOrganizador.isDisplayed();
-		nombreOrganizador.sendKeys("Cesar");
+		nombreOrganizador.sendKeys(nombre);
 		WebElement apellidoOrganizador = getDriver().findElement(By.xpath(organizedLastName));
-		apellidoOrganizador.sendKeys("Ardil");
+		apellidoOrganizador.sendKeys(apellido);
 		WebElement emailOrganizador = getDriver().findElement(By.xpath(organizedMail));
-		emailOrganizador.sendKeys("correoficticio");
+		emailOrganizador.sendKeys(correo);
 		WebElement dominiomail = getDriver().findElement(By.xpath(organizedMailDomain));
-		dominiomail.sendKeys("hotmail.com");
+		dominiomail.sendKeys(dominio);
 		aplicativo.clickConJS(locationOrganizedBtnSave);
+		element(unit).click();
+		element(opcion1.replace("%s", "Castropol5")).click();
+		element(reporter).click();
+		element(opcion1.replace("%s", nombre)).click();
+		element(attendeeList).click();
+		element(opcion1.replace("%s", nombre)).click();
+		
+		aplicativo.clickConJS(guardar);
 	}
 	
 

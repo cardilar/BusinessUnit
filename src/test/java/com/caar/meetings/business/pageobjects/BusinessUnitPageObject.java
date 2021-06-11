@@ -31,7 +31,7 @@ public class BusinessUnitPageObject extends PageObject{
 		aplicativo.clickConJS(pestanaBusiness);
 	}
 
-	public void creaBusinessUnit(String nombre, String padre) {
+	public void creaBusinessUnit(String nombre) {
 		aplicativo.clickConJS(nuevaUnidadNegocio);
 		WebElement name= getDriver().findElement(By.xpath(nombreUnidad));
 		name.sendKeys(nombre);

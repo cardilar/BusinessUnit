@@ -190,7 +190,7 @@
 				<configuration>
 					<includes>
 					
-						<include>dtv_sds_web/**/**/*Runner.java</include>
+						<include>business/**/**/*Runner.java</include>
 					</includes>
 				</configuration>
 			</plugin>
