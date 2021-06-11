@@ -4,6 +4,7 @@ package com.caar.meetings.business.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
@@ -25,17 +26,21 @@ public class BusinessUnitPageObject extends PageObject{
 	
 	public void pestanaOrganization() {
 		aplicativo.clickConJS(pestanaOrganizationUnit);
+		Serenity.takeScreenshot();
 	}
 	
 	public void pestanaBusinessUnit() {
 		aplicativo.clickConJS(pestanaBusiness);
+		Serenity.takeScreenshot();
 	}
 
 	public void creaBusinessUnit(String nombre) {
 		aplicativo.clickConJS(nuevaUnidadNegocio);
 		WebElement name= getDriver().findElement(By.xpath(nombreUnidad));
 		name.sendKeys(nombre);
+		Serenity.takeScreenshot();
 		aplicativo.clickConJS(guardar);
+		Serenity.takeScreenshot();
 	}
 
 }

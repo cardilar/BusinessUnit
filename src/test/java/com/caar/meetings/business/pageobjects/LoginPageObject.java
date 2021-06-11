@@ -4,6 +4,7 @@ package com.caar.meetings.business.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import utilities.Aplicativo;
 
@@ -21,7 +22,9 @@ public class LoginPageObject extends PageObject{
 		user.sendKeys(usuario);
 		WebElement pass= getDriver().findElement(By.xpath(clave_Login));
 		pass.sendKeys(clave);
+		Serenity.takeScreenshot();
 		aplicativo.clickConJS(boton_Login);
+		Serenity.takeScreenshot();
 	}
 	
 

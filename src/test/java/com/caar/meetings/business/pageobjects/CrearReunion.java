@@ -3,6 +3,7 @@ package com.caar.meetings.business.pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.core.pages.PageObject;
 import utilities.Aplicativo;
 
@@ -42,7 +43,8 @@ public class CrearReunion extends PageObject{
 	
 	public void IngresarAReuniones() {
 		aplicativo.clickConJS(pestanaReunion);
-		aplicativo.clickConJS(opcionReuniones);	
+		aplicativo.clickConJS(opcionReuniones);
+		Serenity.takeScreenshot();
 	}
 	
 	public void CrearNuevaReunion(String nombreReunio, String telefono, String tipoReuniones) {
@@ -51,7 +53,8 @@ public class CrearReunion extends PageObject{
 		nombreReunion.sendKeys(nombreReunio);
 		WebElement numeroReunion = getDriver().findElement(By.xpath(number));
 		numeroReunion.sendKeys(telefono);
-		TipoReunion(tipoReuniones);		
+		TipoReunion(tipoReuniones);
+		Serenity.takeScreenshot();
 	}
 
 	private void TipoReunion(String tipoReuniones) {
@@ -59,6 +62,7 @@ public class CrearReunion extends PageObject{
 		WebElement nombreTipoReunion = getDriver().findElement(By.xpath(nameTypeLocation));
 		nombreTipoReunion.clear();
 		nombreTipoReunion.sendKeys(tipoReuniones);
+		Serenity.takeScreenshot();
 		aplicativo.clickConJS(updateTypeMeeting);
 	}
 	
@@ -69,6 +73,7 @@ public class CrearReunion extends PageObject{
 		direccionLocacion.sendKeys(direccion);
 		WebElement nombreLocacion = getDriver().findElement(By.xpath(nameTypeLocation));
 		nombreLocacion.sendKeys(nombre);
+		Serenity.takeScreenshot();
 		aplicativo.clickConJS(locationOrganizedBtnSave);
 	}
 	
@@ -87,6 +92,7 @@ public class CrearReunion extends PageObject{
 		emailOrganizador.sendKeys(correo);
 		WebElement dominiomail = getDriver().findElement(By.xpath(organizedMailDomain));
 		dominiomail.sendKeys(dominio);
+		Serenity.takeScreenshot();
 		aplicativo.clickConJS(locationOrganizedBtnSave);
 		element(unit).click();
 		element(opcion1.replace("%s", "Castropol5")).click();
@@ -94,7 +100,7 @@ public class CrearReunion extends PageObject{
 		element(opcion1.replace("%s", nombre)).click();
 		element(attendeeList).click();
 		element(opcion1.replace("%s", nombre)).click();
-		
+		Serenity.takeScreenshot();
 		aplicativo.clickConJS(guardar);
 	}
 	
