@@ -3,7 +3,7 @@ package com.caar.meetings.business.definitions;
 import com.caar.meetings.business.step.BusinessUnitStep;
 import com.caar.meetings.business.step.LoginStep;
 import com.caar.meetings.business.step.MeetingsStep;
-import com.caar.meetings.business.step.ValidacionReunion;
+import com.caar.meetings.business.step.ValidacionCreacionReunionStep;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,7 +18,7 @@ public class ReunionesDefinitions {
 	@Steps
 	MeetingsStep meetingsStep;
 	@Steps
-	ValidacionReunion validacionReunion;
+	ValidacionCreacionReunionStep validacionCreacionReunionStep;
 	
 	@Given("ingresar a la pagina con {string} y {string}")
 	public void ingresar_a_la_pagina_con_y(String usuario, String clave)  {
@@ -59,7 +59,7 @@ public class ReunionesDefinitions {
 
 	@Then("validar la creacion de la reunion {string}")
 	public void validar_la_creacion_de_la_reunion(String nombreReunion) {
-		validacionReunion.correctamenteCreada(nombreReunion);
+		validacionCreacionReunionStep.validoReunion(nombreReunion);
 	}
 
 
