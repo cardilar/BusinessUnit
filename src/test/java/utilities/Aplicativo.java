@@ -24,13 +24,6 @@ public class Aplicativo extends PageObject{
 		JavascriptExecutor executor = (JavascriptExecutor)getDriver();
 		executor.executeScript("arguments[0].click();", element);
 	}
-	
-	public String extraerTexto(String xpath){
-		WebDriverWait wait = new WebDriverWait(getDriver(), 5);
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-		WebElement element = getDriver().findElement(By.xpath(xpath));
-		return element.getText().toString();
-	}
 
 
 }
