@@ -52,9 +52,9 @@ public class ReunionesDefinitions {
 		meetingsStep.DiligenciarLocalizacion(nombreUbicacion, direccion);
 	}
 	
-	@When("Diligenciar datos de Organizacion {string} {string} {string} {string} {string}")
-	public void diligenciar_Datos_De_Organizacion(String titulo, String nombre, String apellido, String correo, String dominio) {
-		meetingsStep.diligenciarOgranizacion(titulo, nombre, apellido, correo, dominio);
+	@When("Diligenciar datos de Organizacion {string} {string} {string} {string} {string} {string}")
+	public void diligenciar_Datos_De_Organizacion(String titulo, String nombre, String apellido, String correo, String dominio, String UnidadNegocio) {
+		meetingsStep.diligenciarOgranizacion(titulo, nombre, apellido, correo, dominio, UnidadNegocio);
 	}
 
 	@Then("validar la creacion de la reunion {string}")

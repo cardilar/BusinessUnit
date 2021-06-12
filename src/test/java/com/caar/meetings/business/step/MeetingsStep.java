@@ -22,8 +22,8 @@ public class MeetingsStep {
 		crearReunion.Localizacion(nombre, direccion);
 	}
 
-	public void diligenciarOgranizacion(String titulo, String nombre, String apellido, String correo, String dominio) {
-		crearReunion.Organizada(titulo, nombre, apellido, correo, dominio);
+	public void diligenciarOgranizacion(String titulo, String nombre, String apellido, String correo, String dominio, String unidadNegocio) {
+		crearReunion.Organizada(titulo, nombre, apellido, correo, dominio, unidadNegocio);
 	}
 
 }

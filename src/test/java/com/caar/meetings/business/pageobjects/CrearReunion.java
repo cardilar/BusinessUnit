@@ -37,7 +37,7 @@ public class CrearReunion extends PageObject{
 	
 	String reporter = "//div[contains(@id,'MeetingDialog14_ReporterContactId')]//child::a";
 	String attendeeList = "//div[contains(@id,'s2id_autogen11')]//child::a";
-	String opcion1= "//li[@class='select2-results-dept-0 select2-result select2-result-selectable']//div[contains(text(),'%s')]";
+	String opcion1= "//li[contains(@class,'select2-result select2-result-selectable')]//div[contains(text(),'%s')]";
 	
 	String guardar="//span[contains(text(),' Save')]";
 	
@@ -77,7 +77,7 @@ public class CrearReunion extends PageObject{
 		aplicativo.clickConJS(locationOrganizedBtnSave);
 	}
 	
-	public void Organizada(String titulo, String nombre, String apellido, String correo, String dominio) {
+	public void Organizada(String titulo, String nombre, String apellido, String correo, String dominio, String unidadNegocio) {
 		aplicativo.clickConJS(organized);
 		aplicativo.esperarElementoVisible(organizedTitle);
 		WebElement tituloOrganizada = getDriver().findElement(By.xpath(organizedTitle));
@@ -94,12 +94,13 @@ public class CrearReunion extends PageObject{
 		dominiomail.sendKeys(dominio);
 		Serenity.takeScreenshot();
 		aplicativo.clickConJS(locationOrganizedBtnSave);
+		
 		element(unit).click();
-		element(opcion1.replace("%s", "Castropol5")).click();
+		element(opcion1.replace("%s", unidadNegocio)).click();
 		element(reporter).click();
-		element(opcion1.replace("%s", nombre)).click();
+		element(opcion1.replace("%s", apellido)).click();
 		element(attendeeList).click();
-		element(opcion1.replace("%s", nombre)).click();
+		element(opcion1.replace("%s", apellido)).click();
 		Serenity.takeScreenshot();
 		aplicativo.clickConJS(guardar);
 	}
